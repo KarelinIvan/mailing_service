@@ -1,0 +1,20 @@
+{% extends 'mailing_service/base.html' %}
+
+{% block title %}Детали Рассылки{% endblock %}
+
+{% block content %}
+<h1>Рассылка №{{ mailing.id }}</h1>
+<p><strong>Сообщение:</strong> {{ mailing.message.subject }}</p>
+<p><strong>Периодичность:</strong> {{ mailing.get_periodicity_display }}</p>
+<p><strong>Статус:</strong> {{ mailing.get_status_display }}</p>
+<p><strong>Дата Начала:</strong> {{ mailing.start_datetime }}</p>
+<p><strong>Клиенты:</strong></p>
+<ul>
+    {% for client in mailing.clients.all %}
+    <li>{{ client.full_name }} ({{ client.email }})</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'mailing_update' mailing.id %}" class="btn btn-warning">Редактировать</a>
+<a href="{% url 'mailing_delete' mailing.id %}" class="btn btn-danger">Удалить</a>
+<a href="{% url 'mailing_list' %}" class="btn btn-secondary">Назад к списку</a>
+{% endblock %}

@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "^5.1.2"
+apscheduler = "^3.10.4"
+django-apscheduler = "^0.7.0"
 
 
 [build-system]

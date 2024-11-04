@@ -1,0 +1,34 @@
+
+{% extends 'mailing_service/base.html' %}
+
+{% block title %}{% if form.instance.pk %}Редактировать Рассылку{% else %}Создать Рассылку{% endif %}{% endblock %}
+
+{% block content %}
+<h1>{% if form.instance.pk %}Редактировать Рассылку{% else %}Создать Рассылку{% endif %}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="mb-3">
+        <label for="id_start_datetime" class="form-label">Дата и Время Начала</label>
+        {{ form.start_datetime }}
+        {{ form.start_datetime.errors }}
+    </div>
+    <div class="mb-3">
+        <label for="id_periodicity" class="form-label">Периодичность</label>
+        {{ form.periodicity }}
+        {{ form.periodicity.errors }}
+    </div>
+    <div class="mb-3">
+        <label for="id_message" class="form-label">Сообщение</label>
+        {{ form.message }}
+        {{ form.message.errors }}
+    </div>
+    <div class="mb-3">
+        <label for="id_clients" class="form-label">Клиенты</label>
+        {{ form.clients }}
+        {{ form.clients.errors }}
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a href="{% url 'mailing_list' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}
