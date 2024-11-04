@@ -168,6 +168,13 @@ LOGGING = {
 
 AUTH_USER_MODEL = 'users.User'
 
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "ivankarelin93@ya.ru"
+EMAIL_HOST_PASSWORD = "ymmrkxkpscchvoee"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
 AUTHENTICATION_BACKENDS = [
     'users.backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
